@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Eu tenho o seguinte pai componente, com o seguinte hook:
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+export default function ProductsDisplay() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [filterType, setFilterType] = useState<string | null>(null)
+  console.log(filterType)
+  return (
+    <section className="container flex gap-3 mx-auto w-full">
+      <ProductsFilter />
+      <div id="content" className="flex flex-col gap-2 w-full mx-auto">
+        <div className="relative w-[16em] px-2 ">
+          <button
+            bg-blue-200
+            id="btn-ordener"
+            className="w-full flex gap-2 items-center text-blackStore px-5 py-2 border-[1px] rounded-lg "
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <FaArrowUpShortWide className="text-[18px]" />
+            <span className="text-[16px]  font-light">Ordernar</span>
+          </button>
+          {isOpen ? <OrderDisplay setFilter={setFilterType} /> : null}
+        </div>
+....
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+eu passo o hook como prop aqui:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+          {isOpen ? <OrderDisplay setFilter={setFilterType} /> : null}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Eis aqui meu component filho:
 
-## Learn More
+```
+const OrderDisplay = ({setFilterType}:{setFilterType: React.Dispatch<React.SetStateAction<string | null>>}) => {
+  const orders = [
+    {type:'reate', text:'Relevância'},
+    {type:'byDate', text:'Mais recentes'},
+    {type:'higherPrice', text:'Maio preço'},
+    {type:'lowerPrice', text:'Menor preço'},
+    {type:'AtoZ', text:'De A a Z'},
+    {type:'ZtoA', text:'De Z a A'},
+  ];
 
-To learn more about Next.js, take a look at the following resources:
+  const getOrder=({e,type, text}:any)=>{
+    const value = text;
+    e.preventDefault();
+       setFilterType(type )
+  }
+  return (
+    <div className="w-[15em] absolute top-12 z-30 bg-white border drop-shadow-2xl ">
+      <ul className="flex flex-col   ">
+        {Object.values(orders).map((order:{ type: string, text: string }, index: number) => (
+          <li
+            key={index}
+            className="py-2 px-4 font-light text-blackStore text-[14px] hover:bg-pinkStore"
+            onClick={(e:any)=> getOrder({e,...order})}
+          >
+            {order.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+quando tento capturar um dos valores dentro do < li> do component filho, me retorna um erro no console:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+TypeError: setFilterType is not a function
+```
