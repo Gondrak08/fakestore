@@ -75,9 +75,12 @@ export default function ProductsDisplay() {
   }
 
   useEffect(()=>{getSortedList()});
+
   return (
     <section className="container flex gap-3 mx-auto w-full">
+
       <ProductsFilter setFilterType={setFilterType} />
+
       <div id="content" className="flex flex-col gap-2 w-full mx-auto">
         <div className="relative w-[16em] px-2 ">
           <button
@@ -107,7 +110,7 @@ export default function ProductsDisplay() {
                     src={product.image}
                     width={"500"}
                     height={"500"}
-                    className="bg-cover w-full h-full overflow-hidden"
+                    className="bg-cover bg-center w-full h-full overflow-hidden"
                   />
 
                   <RateProduct rate={product.rating} />

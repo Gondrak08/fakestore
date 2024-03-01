@@ -20,7 +20,7 @@ export default function ProductsFilter({
     },
   );
   return (
-    <aside className="w-[20em] border-[1px] rounded-lg p-3">
+    <aside className="hidden lg:flex flex-col w-[20em] border-[1px] rounded-lg p-3">
       <div className="flex flex-col  gap-2">
         <div className="w-full flex items-center gap-2">
           <IoOptions />

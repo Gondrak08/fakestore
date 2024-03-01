@@ -25,3 +25,7 @@ span {
 #btn-ordener:hover {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
 }
+
+#mobileNavbar {
+  background-color: (3, 4, 78, 0.8);
+}

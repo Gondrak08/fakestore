@@ -71,3 +71,26 @@ quando tento capturar um dos valores dentro do < li> do component filho, me reto
 ```
 TypeError: setFilterType is not a function
 ```
+
+Eu estou tentando tipar o seguinte hook que estou passando como prop:
+
+```
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+      {isOpen && <MobileNavbar setIsOpen={setIsOpen(!isOpen)} />}
+```
+
+```
+const MobileNavbar = ({
+  setIsOpen,
+}: {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+```
+
+Porém estou recebendo um erro de estlint em:
+
+```
+  {isOpen && <MobileNavbar setIsOpen={setIsOpen(!isOpen)} />}
+```
+
+a mensagem de erro é: "type void is not assinable to " React.Dispatch<React.SetStateAction<boolean>> "

@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className=" w-full h-full bg-[#f7f7f7] ">
-      <section className="container mx-auto grid grid-cols-5 py-12">
-        <div className="flex flex-col gap-2">
+      <section className="container mx-auto grid gird-cols-1 lg:grid-cols-5 py-12">
+        <div className="hidden lg:flex flex-col gap-2">
           <span className="text-[18px] text-blackStore font-bold">
             Minha Conta
           </span>
@@ -21,7 +21,7 @@ export default function Footer() {
             )}
           </ul>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="hidden lg:flex flex-col gap-2">
           <span className="text-[18px] text-blackStore font-bold">
             Institucional
           </span>
@@ -46,7 +46,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="hidden lg:flex flex-col gap-2">
           <span className="text-[18px] text-blackStore font-bold">
             Ajuda e suporte
           </span>
@@ -69,7 +69,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="hidden lg:flex flex-col gap-2">
           <span className="text-[18px] text-blackStore font-bold">
             Políticas e termos
           </span>
@@ -89,7 +89,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-5">
+        <div className="w-full flex flex-col gap-5 items-center">
           <span className="cursor-pointer text-[18px] text-blackStore font-bold">
             Certificados & Selos
           </span>
@@ -98,14 +98,14 @@ export default function Footer() {
               (image: string, index: number) => (
                 <div
                   key={index}
-                  className="relative flex flex-col justify-center w-12 h-12"
+                  className="relative flex lg:flex-col lg:justify-center w-12 h-12"
                 >
                   <Image
                     alt="logo"
                     src={image}
                     width={"100"}
                     height={"100"}
-                    className=" bg-center top-0 right-0 left-0 bottom-0 bg-cover "
+                    className=" bg-center  bg-contain lg:bg-cover "
                   />
                 </div>
               ),
@@ -114,7 +114,7 @@ export default function Footer() {
         </div>
       </section>
       <section className="w-full bg-[#353a42] text-center py-1">
-          <span className="text-[14px] font-light text-white">Demo Website 2024 @VitorAlecrim</span>
+          <span className="text-[14px] font-light text-white">Demo Website 2024 powered by @VitorAlecrim</span>
       </section>
     </footer>
   );

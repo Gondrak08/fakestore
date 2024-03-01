@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <section className="container mx-auto  h-full flex flex-col gap-2 py-5">
+    <section className="container mx-auto  h-full flex flex-col gap-2 py-5 p-4">
       <div className="w-full flex gap-2 items-center text-[14px]">
         <span className="flex">Principal </span>
         <h2 className="font-bold">° PRIMAVERA VERÃO 23/24</h2>
