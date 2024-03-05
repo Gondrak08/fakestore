@@ -64,7 +64,7 @@ export default function ShoppingCart() {
         const totalPrice:number = products[i].product.price * products[i].count;
       allPrice.push(totalPrice)
     }
-    const total:number = allPrice.reduce((a,b)=> a + b)
+    const total:number = parseFloat(allPrice.reduce((a,b)=> a + b).toFixed(2)) // to make a round number.
     setTotalPrice(total)
     }
   }
@@ -80,7 +80,7 @@ export default function ShoppingCart() {
       } absolute top-0 left-0  w-full h-screen  z-50`}
     >
       <div
-        className="absolute left-0 top-0 w-full h-screen "
+        className="absolute left-0 top-0 w-full h-full "
         onClick={() => setIsOpen(false)}
       />
       <aside className="absolute right-0 top-0 h-screen w-[25em] z-50 bg-white flex flex-col ">
@@ -95,7 +95,7 @@ export default function ShoppingCart() {
           <span className="text-sm font-bold">você ganhou frete grátis!</span>
         </div>
         {products != null && (
-          <div className="p-5 flex flex-col gap-5 ">
+          <div className="p-5 flex flex-col gap-5 overflow-y-auto ">
             {Object.values(products).map(
               (cartProduct: ShopCartProduct, index: number) => {
                 const { product, count } = cartProduct;
