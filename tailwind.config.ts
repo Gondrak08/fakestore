@@ -17,6 +17,7 @@ const config: Config = {
         pinkStore: "#ea9c9a",
         lightGrayStore: "#e3e4e6",
         blackStore: "#353a42",
+        greenStore: "#00c7c7",
       },
     },
   },

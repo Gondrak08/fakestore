@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Link from 'next/link'
+import ShoppinCartContext from '@/context/utils-context'
 import Image from "next/image";
 import {
   IoSearch,
@@ -11,7 +13,12 @@ import {
 } from "react-icons/io5";
 
 export default function Navbar() {
+  const context = useContext(ShoppinCartContext)
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const openShoppinCart=()=>{
+    context.setIsOpen(!context.isOpen);
+  console.log("navbar context", context)
+  }
   return (
     <>
       {isOpen && <MobileNavbar setIsOpen={setIsOpen} />}
@@ -26,7 +33,7 @@ export default function Navbar() {
                   setIsOpen(!isOpen);
                 }}
               />
-              <div className="w-[15em] h-full pl-9">
+              <Link href="/" className="w-[15em] h-full pl-9">
                 <Image
                   alt="logo"
                   src="/logo.svg"
@@ -34,7 +41,7 @@ export default function Navbar() {
                   height={"100"}
                   className="w-full h-full  object-fit"
                 />
-              </div>
+              </Link>
               <div className="flex gap-2  ">
                 <IoPersonOutline className="lg:hidden visible cursor-pointer w-6 h-full" />
                 <IoBagOutline className="lg:hidden visible cursor-pointer w-6 h-full" />
@@ -63,17 +70,19 @@ export default function Navbar() {
             </ul>
           </div>
 
-          <div className="flex items-center justify-start gap-2 ">
-            <div className="relative w-full lg:w-fit flex items-center border-[1px] border-black rounded-md px-5 py-2">
+          <div className="flex items-center justify-start  gap-2 ">
+            <div className="relative lg:w-fit flex items-center border-[1px] border-black rounded-md px-5 py-2">
               <input
-                className="w-fit h-full  bg-transparent rounded-md placeholder:text-black text-black"
+                className="md:w-full lg:w-[20em] h-full  bg-transparent rounded-md placeholder:text-black text-black"
                 placeholder="O que você está procurando ? "
               />
               <IoSearch className="absolute right-2" />
             </div>
-            <IoPersonOutline className="hidden lg:visible cursor-pointer w-5 h-5" />
-            <IoHeartOutline className="hidden lg:visible cursor-pointer w-5 h-5" />
-            <IoBagOutline className="hidden lg:visible cursor-pointer w-5 h-5" />
+            <IoPersonOutline className="hidden lg:flex text-black cursor-pointer w-5 h-5" />
+            <IoHeartOutline className="hidden lg:flex cursor-pointer w-5 h-5" />
+            <IoBagOutline className="hidden lg:flex cursor-pointer w-5 h-5" 
+              onClick={()=>{openShoppinCart()}} 
+            />
           </div>
         </nav>
       </section>

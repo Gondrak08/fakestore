@@ -1,31 +1,39 @@
-'use client'
-import React,{ createContext, useState, useEffect } from "react";
-
-interface defaultValue { 
-    agentId: string,
-    setAgentId:React.Dispatch<React.SetStateAction<string>>, 
-    search:string,
-    setSearch:React.Dispatch<React.SetStateAction<string>>
+"use client";
+import React, { createContext, useState } from "react";
+import { Product } from "@/interfaces";
+interface defaultValue {
+  products: ShopCartProduct[] | null;
+  setProducts: React.Dispatch<React.SetStateAction<ShopCartProduct[] | null>>;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export interface ShopCartProduct {
+  product: Product;
+  count: number;
+}
+const defaultValue: defaultValue = {
+  products: null,
+  setProducts: () => [{}],
+  isOpen: false,
+  setIsOpen: () => {},
 };
 
-const defaultValue:defaultValue = {
-    agentId:'',
-    setAgentId:():string => '',
-    search:'',
-    setSearch:():string => ''
+const ShoppinCartContext = createContext(defaultValue);
+
+export function ShoppinCartProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [products, setProducts] = useState<ShopCartProduct[] | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  return (
+    <ShoppinCartContext.Provider
+      value={{ products, setProducts, isOpen, setIsOpen }}
+    >
+      {children}
+    </ShoppinCartContext.Provider>
+  );
 }
 
- const UtilsContext = createContext(defaultValue);
-
-export  function UtilsProvider({children}:{children:React.ReactNode}){
-    const [agentId, setAgentId]=useState<string>('');
-    const [search, setSearch] = useState<string>('');
-
-    return(
-        <UtilsContext.Provider value={{agentId, setAgentId, search, setSearch}}>
-            {children}
-        </UtilsContext.Provider>
-    )
-}
-
-export default UtilsContext
+export default ShoppinCartContext;

@@ -1,0 +1,12 @@
+import { ShoppinCartProvider } from "@/context/utils-context";
+export default function PagesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <ShoppinCartProvider>{children}</ShoppinCartProvider>
+    </>
+  );
+}

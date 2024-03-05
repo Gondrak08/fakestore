@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from 'next/link'
 import Image from "next/image";
 import Api from "@/api/api.json";
 import { Product, Rating } from "@/interfaces";
@@ -56,17 +57,14 @@ export default function ProductsDisplay() {
       case "jewelery" :
         const categoryJewlery = [...products].filter((product:Product, index:number)=> product.category === filterType);
         setFilteredList(categoryJewlery)
-      console.log('hiiiiii!!!')
       return null
       case "electronics" :
         const categoryEletronics = [...products].filter((product:Product, index:number)=> product.category === filterType);
         setFilteredList(categoryEletronics)
-      console.log('hiiiiii!!!')
       return null
       case "women's clothing" :
         const categoryWomen = [...products].filter((product:Product, index:number)=> product.category === filterType);
         setFilteredList(categoryWomen)
-      console.log('hiiiiii!!!')
       return null
       case null:
         setFilteredList(products);
@@ -74,7 +72,7 @@ export default function ProductsDisplay() {
     }
   }
 
-  useEffect(()=>{getSortedList()});
+  useEffect(()=>{getSortedList()},[]);
 
   return (
     <section className="container flex gap-3 mx-auto w-full">
@@ -96,7 +94,7 @@ export default function ProductsDisplay() {
         <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2  w-full mx-auto">
           {Object.values(filteredList ?? products).map((product: Product, index: number) => {
             return (
-              <div
+              <Link href={`product/${product.id}`}
                 key={product.id}
                 id="card"
                 className=" relative flex flex-col gap-3 h-full border-[1px]  p-3 cursor-pointer"
@@ -123,7 +121,7 @@ export default function ProductsDisplay() {
                     R$ {""} {product.price}
                   </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
