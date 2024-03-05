@@ -17,7 +17,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openShoppinCart=()=>{
     context.setIsOpen(!context.isOpen);
-  console.log("navbar context", context)
+    console.log("open shoppingCart", context.isOpen)
   }
   return (
     <>
@@ -44,7 +44,7 @@ export default function Navbar() {
               </Link>
               <div className="flex gap-2  ">
                 <IoPersonOutline className="lg:hidden visible cursor-pointer w-6 h-full" />
-                <IoBagOutline className="lg:hidden visible cursor-pointer w-6 h-full" />
+                <IoBagOutline className="lg:hidden visible cursor-pointer w-6 h-full" onClick={()=>{openShoppinCart()}}/>
               </div>
             </div>
 

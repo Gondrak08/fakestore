@@ -40,7 +40,8 @@ export default function ShoppingCart() {
         setProducts(updatedProducts);
       }
     }
-  }
+  };
+
   const decreaseProduct=(product:Product)=>{
     if(products!=null){
        const productExists = products.some(
@@ -56,7 +57,8 @@ export default function ShoppingCart() {
         setProducts(updatedProducts);
       }
     }
-  }
+  };
+
   const getAllPrice = (products:ShopCartProduct[] | null)=>{
     if(products != null){ 
       const allPrice:number[] = [];     
@@ -69,9 +71,7 @@ export default function ShoppingCart() {
     }
   }
 
-
   useEffect(()=> getAllPrice(products),[products]);
-
 
   return (
     <section
@@ -80,7 +80,7 @@ export default function ShoppingCart() {
       } absolute top-0 left-0  w-full h-screen  z-50`}
     >
       <div
-        className="absolute left-0 top-0 w-full h-full "
+        className="hidden md:flex absolute left-0 top-0 w-full h-full"
         onClick={() => setIsOpen(false)}
       />
       <aside className="absolute right-0 top-0 h-screen w-[25em] z-50 bg-white flex flex-col ">

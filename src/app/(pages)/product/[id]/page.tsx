@@ -3,7 +3,7 @@ import Contact from "@/components/Contact";
 import { Product } from "@/interfaces";
 import api from "@/api/api.json";
 import StarRating from "@/components/StarRating";
-import AddProductBTN from '@/components/AddProduct'
+import AddProductBTN from "@/components/AddProduct";
 type Params = { id: number };
 export default function ProductPage({ params }: { params: Params }) {
   const products: Product[] = api;
@@ -16,8 +16,8 @@ export default function ProductPage({ params }: { params: Params }) {
         <h3 className="font-bold text-sm text-blackStore ">
           * {product[0].title}
         </h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full h-[30em]">
-          <div className="w-full h-full relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full h-full md:h-[30em]">
+          <div className="w-full h-[10em] md:h-full relative">
             <Image
               alt="product image"
               src={product[0].image}
@@ -26,23 +26,28 @@ export default function ProductPage({ params }: { params: Params }) {
               className="w-full h-full absolute  bg-center bg-no-repeat object-contain"
             />
           </div>
-          <div className="w-full h-full flex flex-col gap-5">
+          <div className="w-full h-full flex flex-col gap-5 px-3">
             <div className="w-full flex-col">
-             <h1 className="text-2xl text-blackStore font-bold">
-              {product[0].title}
-            </h1>
-            <div className="flex items-center">
-              <StarRating rating={product[0].rating} />
-              <span className="text-sm text-pinkStore"> / {product[0].rating.count}+</span>
+              <h1 className=" text-md md:text-lg lg:text-2xl text-blackStore font-bold">
+                {product[0].title}
+              </h1>
+              <div className="flex items-center">
+                <StarRating rating={product[0].rating} />
+                <span className="text-sm text-pinkStore">
+                  {" "}
+                  / {product[0].rating.count}+
+                </span>
+              </div>
+              <span className="text-md font-bold text-blackStore">
+                R$ {product[0].price}
+              </span>
             </div>
-            <span className="text-md font-bold text-blackStore">
-              R$ {product[0].price}
-            </span>
-            </div>
-            <AddProductBTN product={product[0]}/>
+            <AddProductBTN product={product[0]} />
             <div>
-              <h2 className="text-xl text-blackStore font-bold">Descrição</h2>
-              <p>{product[0].description}</p>
+              <h2 className="text-md lg:text-xl text-blackStore font-bold">
+                Descrição
+              </h2>
+              <p className="text-sm md:text-md">{product[0].description}</p>
             </div>
           </div>
         </div>
