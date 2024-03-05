@@ -72,7 +72,7 @@ export default function ProductsDisplay() {
     }
   }
 
-  useEffect(()=>{getSortedList()},[]);
+  useEffect(()=>{getSortedList()});
 
   return (
     <section className="container flex gap-3 mx-auto w-full">
