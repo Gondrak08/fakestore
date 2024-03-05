@@ -83,7 +83,7 @@ export default function ShoppingCart() {
         className="hidden md:flex absolute left-0 top-0 w-full h-full"
         onClick={() => setIsOpen(false)}
       />
-      <aside className="absolute right-0 top-0 h-screen w-[25em] z-50 bg-white flex flex-col ">
+      <aside className="absolute right-0 top-0 h-screen w-full md:w-[25em] z-50 bg-white flex flex-col ">
         <div className="w-full flex justify-between items-center px-5 py-3">
           <IoCloseSharp
             className="text-2xl cursor-pointer"
