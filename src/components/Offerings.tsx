@@ -3,11 +3,11 @@ export default function Offerings() {
     <section className="w-full h-full flex flex-col items-center gap-5 my-3">
       <div className="lg:w-[36em] flex flex-col items-center justify-center mx-auto">
         <h4 className="text-blackStore text-[18px] font-bold uppercase">
-          só a piccadilly tem
+          só a vanpick tem
         </h4>
         <p className="text-[14px] text-center text-blackStore font-light">
-          Com tecnologias exclusivas, produzimos calçados que criam soluções que
-          unem conforto, beleza e segurança
+          As melhores tecnologias exclusivas, para criam soluções que unem
+          conforto, beleza e segurança
         </p>
       </div>
       <div className="container grid  grid-cols-1 lg:grid-cols-3 gap-2 text-white h-full mx-auto p-4 lg:p-0">

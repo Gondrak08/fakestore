@@ -12,7 +12,7 @@ export default function ProductPage({ params }: { params: Params }) {
   );
   return (
     <section className="w-full flex flex-col gap-12 py-4">
-      <div className="container mx-auto flex flex-col gap-5 ">
+      <div className="container mx-auto flex flex-col gap-5 px-2 lg:px-0 ">
         <h3 className="font-bold text-sm text-blackStore ">
           * {product[0].title}
         </h3>

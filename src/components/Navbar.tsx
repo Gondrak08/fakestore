@@ -17,7 +17,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openShoppinCart=()=>{
     context.setIsOpen(!context.isOpen);
-    console.log("open shoppingCart", context.isOpen)
   }
   return (
     <>
@@ -36,7 +35,7 @@ export default function Navbar() {
               <Link href="/" className="w-[15em] h-full pl-9">
                 <Image
                   alt="logo"
-                  src="/logo.svg"
+                  src="/vanpicklogo.svg"
                   width={"100"}
                   height={"100"}
                   className="w-full h-full  object-fit"
@@ -44,7 +43,10 @@ export default function Navbar() {
               </Link>
               <div className="flex gap-2  ">
                 <IoPersonOutline className="lg:hidden visible cursor-pointer w-6 h-full" />
+                <div className="w-fit relative">
                 <IoBagOutline className="lg:hidden visible cursor-pointer w-6 h-full" onClick={()=>{openShoppinCart()}}/>
+                  <span className="lg:hidden flex justify-center items-center absolute bottom-2 left-4 w-[1.5em] h-[1.5em] p-[.7em] rounded-full  bg-pinkStore text-white font-bold text-[11px]">{context.products?.length ?? 0}</span>
+                </div>
               </div>
             </div>
 
@@ -80,10 +82,12 @@ export default function Navbar() {
             </div>
             <IoPersonOutline className="hidden lg:flex text-black cursor-pointer w-5 h-5" />
             <IoHeartOutline className="hidden lg:flex cursor-pointer w-5 h-5" />
-            <IoBagOutline className="hidden lg:flex cursor-pointer w-5 h-5" 
-              onClick={()=>{openShoppinCart()}} 
-            />
-          </div>
+            <div className="w-fit relative">
+              <IoBagOutline className="hidden lg:flex cursor-pointer w-5 h-5" 
+              onClick={()=>{openShoppinCart()}}/>
+              <span className="hidden lg:flex justify-center items-center absolute bottom-2 left-4 w-[1.5em] h-[1.5em] p-[.7em] rounded-full  bg-pinkStore text-white font-bold text-[11px]">{context.products?.length ?? 0}</span>
+            </div>
+           </div>
         </nav>
       </section>
     </>
@@ -95,7 +99,7 @@ const Navalert = () => {
     <section className="w-full flex items-center justify-center py-2 bg-pinkStore">
       <div className="text-[12px] container flex items-center justify-center gap-2">
         <span>DEMO WEBSITE* </span>
-        <a href="https://flat-co.netlify.app/">Confira mais</a>
+        <a href="https://flat-co.netlify.app/" className=" text-blue-900 underline underline-offset-2 text-md font-light" >Confira mais</a>
       </div>
     </section>
   );
@@ -117,7 +121,7 @@ const MobileNavbar = ({
           <div className="">
             <Image
               alt="logo"
-              src="/logo.svg"
+              src="/vanpicklogo.svg"
               width={"100"}
               height={"100"}
               className="w-full h-full  object-fit"
