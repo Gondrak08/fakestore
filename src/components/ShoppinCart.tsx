@@ -61,11 +61,12 @@ export default function ShoppingCart() {
 
   const getAllPrice = (products:ShopCartProduct[] | null)=>{
     if(products != null){ 
-      const allPrice:number[] = [];     
+      const allPrice:number[] = [0];     
       for(let i =0; i < products.length; i++){
         const totalPrice:number = products[i].product.price * products[i].count;
       allPrice.push(totalPrice)
     }
+
     const total:number = parseFloat(allPrice.reduce((a,b)=> a + b).toFixed(2)) // to make a round number.
     setTotalPrice(total)
     }
@@ -114,13 +115,13 @@ export default function ShoppingCart() {
                           className="absolute object-contain top-0 right-0 left-0 bottom-0 w-full h-full"
                         />
                       </div>
-                      <div>
+                      <div className="w-full">
                         <h2 className="text-md text-blackStore font-bold">
                           {product.title}
                         </h2>
                       </div>
                       <IoCloseCircleOutline
-                        className="text-red-500 text-lg absolute right-1 top-0"
+                        className="text-red-500 text-3xl "
                         onClick={() => removeProductFromcart(product)}
                       />
                     </div>
