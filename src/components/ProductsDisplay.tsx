@@ -14,7 +14,7 @@ export default function ProductsDisplay() {
   const [filteredList, setFilteredList] = useState<Product[] | null>(null);
   const [filterType, setFilterType] = useState<string | null>(null)
 
-   const getSortedList=()=>{
+   const getSortedList=(filterType:string | null)=>{
     switch(filterType){
       case'rate':
         const sortByRate =  [...products].sort((a,b)=> b.rating.rate - a.rating.rate)
@@ -72,7 +72,9 @@ export default function ProductsDisplay() {
     }
   }
 
-  useEffect(()=>{getSortedList()});
+  useEffect(()=>{getSortedList(filterType)},[filterType]);
+  useEffect(()=>{if(filteredList == null) setFilteredList(products)},[filteredList, products]);
+
 
   return (
     <section className="container flex gap-3 mx-auto w-full">
@@ -92,9 +94,11 @@ export default function ProductsDisplay() {
           {isOpen ? <OrderDisplay setFilterType={setFilterType} /> : null}
         </div>
         <div className="grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2  w-full mx-auto">
-          {Object.values(filteredList ?? products).map((product: Product, index: number) => {
+          { filteredList && Object.values(filteredList ).map((product: Product, index: number) => {
+            // console.log("product,",product.id)
             return (
               <Link href={`product/${product.id}`}
+                onClick={()=>{console.log("link was clicked", product.id)}}
                 key={product.id}
                 id="card"
                 className=" relative flex flex-col gap-3 h-full border-[1px]  p-3 cursor-pointer"

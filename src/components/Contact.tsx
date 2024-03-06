@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
-    <section className="bg-[url('/background.svg')] bg-contain  h-[19em] w-full flex flex-wrap items-center justify-center">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5  lg:w-[50%]  py-5">
+    <section className="bg-[url('/background.svg')] bg-contain  h-fit w-full flex flex-wrap items-center justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5  lg:w-[50%]  py-5 md:py-7">
         <div
           id="contact-box"
           className="flex flex-col items-center gap-3 w-full md:w-[25em] px-5"
