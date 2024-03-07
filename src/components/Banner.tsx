@@ -7,13 +7,15 @@ export default function Banner() {
         <span className="flex">Principal </span>
         <h2 className="font-bold">° PRIMAVERA VERÃO 23/24</h2>
       </div>
-      <Image
-        alt="banner"
-        src="/banner.png"
-        width={"1000"}
-        height={"1000"}
-        className="w-full h-full bg-cover"
-      />
+      <div className="relative w-full h-[17em]">
+        <Image
+          alt="banner"
+          src="/banner.png"
+          width={"1000"}
+          height={"1000"}
+          className="absolute top-0 right-0 left-0 bottom-0 w-full h-full  aspect-auto object-contain md:object-fill "
+        />
+      </div>
       <div className="flex flex-col">
         <h1 className="font-bold text-2xl text-gray-800">
           PRIMAVERA VERÃO 23/24
