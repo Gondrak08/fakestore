@@ -7,7 +7,7 @@ export default function StarRating({ rating }: { rating: Rating }) {
       count={5}
       size={24}
       isHalf={true}
-      value={rating.rate}
+      value={rating?.rate}
       edit={false}
       activeColor="#ffd700"
     />

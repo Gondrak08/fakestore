@@ -11,9 +11,20 @@ import { HiMinusCircle } from "react-icons/hi2";
 import { Product } from "@/interfaces";
 
 export default function ShoppingCart() {
+  const [isFirstPush, setIsFirstPush] = useState<boolean>(true);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const context = useContext(ShoppinCartContext);
   const { isOpen, setIsOpen, products, setProducts } = context;
+
+
+const closeShoppingCart=()=>{
+    if(isOpen && isFirstPush){
+      setIsFirstPush(false)
+      setIsOpen(false);
+    } else {
+      setIsOpen(false)
+    }
+  }
 
   const removeProductFromcart = (product: Product) => {
     if(products!=null){
@@ -74,6 +85,14 @@ export default function ShoppingCart() {
 
   useEffect(()=> getAllPrice(products),[products]);
 
+  useEffect(()=>{
+    if(products?.length === 1 && products[0]?.count === 1 && isFirstPush ) {
+      setIsOpen(true)
+    }   
+
+  },[products, isFirstPush, setIsOpen]);
+
+  
   return (
     <section
       className={`${
@@ -82,7 +101,7 @@ export default function ShoppingCart() {
     >
       <div
         className="hidden md:flex absolute left-0 top-0 w-full h-full"
-        onClick={() => setIsOpen(false)}
+        onClick={() => closeShoppingCart()}
       />
       <aside className="absolute right-0 top-0 h-screen w-full md:w-[25em] z-50 bg-white flex flex-col ">
         <div className="w-full flex justify-between items-center px-5 py-3">

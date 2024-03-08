@@ -17,18 +17,18 @@ export default function Contact() {
               type="tel"
               name="telefone"
               placeholder="Digite seu telefone"
-              className="w-full border-[1px]  border-black rounded-lg py-1 px-2"
+              className="text-blackStore w-full border-[1px]  border-black rounded-lg py-1 px-2 placeholder:px-2"
             />
             <input
               type="email"
               name="email"
               placeholder="Digite o seu email"
-              className="w-full border-[1px]  border-black rounded-lg py-1 "
+              className="text-blackStore w-full border-[1px]  border-black rounded-lg py-1 px-2 placeholder:px-2"
             />
             <input
               type="date"
               name="date"
-              className="w-full border-[1px]  border-black rounded-lg py-1 "
+              className="text-blackStore w-full border-[1px]  border-black rounded-lg py-1 px-2 placeholder:px-2 "
             />
             <button className="rounded-lg text-center text-white uppercase w-full py-2 bg-pinkStore">
               quero receber
