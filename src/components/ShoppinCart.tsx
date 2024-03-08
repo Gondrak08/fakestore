@@ -87,7 +87,7 @@ const closeShoppingCart=()=>{
 
   useEffect(()=>{
     if(products?.length === 1 && products[0]?.count === 1 && isFirstPush ) {
-      setIsOpen(true)
+      setTimeout(()=>setIsOpen(true), 1000)
     }   
 
   },[products, isFirstPush, setIsOpen]);
