@@ -14,7 +14,21 @@ export const metadata: Metadata = {
   description: "A eCommerce demo website made by <@VitorAlecrim>",
   icons: "vanpicklogo.svg",
 };
-
+// Verificando se o usuário está acessando a página a partir do aplicativo do Instagram
+        if (window.navigator.userAgent.includes("Instagram")) {
+            // Redirecionando para o navegador nativo do Android (Google Chrome)
+            window.location.href = "intent://seusite.com#Intent;scheme=http;package=com.android.chrome;end";
+        }
+        // Verificando se o usuário está acessando a página a partir do aplicativo do WhatsApp
+        else if (window.navigator.userAgent.includes("WhatsApp")) {
+            // Redirecionando para o aplicativo do WhatsApp
+            window.location.href = "intent://seusite.com#Intent;scheme=http;package=com.android.chrome;end";
+        }
+        // Verificando se o usuário está acessando a página a partir do aplicativo do Facebook
+        else if (window.navigator.userAgent.includes("FBAV")) {
+            // Redirecionando para o aplicativo do Facebook
+            window.location.href = "intent://seusite.com#Intent;scheme=http;package=com.android.chrome;end";
+        }
 export default function RootLayout({
   children,
 }: Readonly<{
