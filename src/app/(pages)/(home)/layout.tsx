@@ -13,10 +13,19 @@ export default function HomeLayout({
         const confirmRedirect = confirm("Deseja abrir esta página no navegador Chrome nativo do Android?");
         if (confirmRedirect) {
             // Redirecionar para o navegador nativo do Android (Google Chrome)
-            window.location.href = "intent://seusite.com#Intent;scheme=http;package=com.android.chrome;end";
+            window.location.href = "intent://amazing-duckanoo-88250c.netlify.app/#Intent;scheme=http;package=com.android.chrome;end";
         }
       console.log("quack", userAgent)
-    }  });
+    }
+    if (document.referrer.includes("whatsapp.com")) {
+        // Perguntar ao usuário se deseja abrir no navegador Chrome nativo
+        const confirmRedirect = confirm("Deseja abrir esta página no navegador Chrome nativo do Android?");
+        if (confirmRedirect) {
+            // Redirecionar para o navegador nativo do Android (Google Chrome)
+            window.location.href = "intent://amazing-duckanoo-88250c.netlify.app#Intent;scheme=http;package=com.android.chrome;end";
+        }
+    }
+  });
 
   return (
     <>
